@@ -8,7 +8,7 @@ function makePresetNodes(): Array<Node> {
   const presetNodes: Node[] = [];
   const numCircles = 10;
   const metaCircleRadius = Math.min(canvasWidth, canvasHeight) / 4;
-  presetNodes.push(new Node(canvasWidth / 2, canvasHeight / 2, 50));
+  presetNodes.push(new Node(canvasWidth / 2, canvasHeight / 2, 80, 'qclogo.png'));
   for (let i = 0; i < numCircles; i++) {
     const angle = (i / ((numCircles)/ 2)) * Math.PI; // Calculate the angle at which the element will be placed.
     const x = (metaCircleRadius * Math.cos(angle)) + (canvasWidth / 2);
@@ -30,7 +30,7 @@ export function useCanvas(): [Array<Node>, React.Dispatch<React.SetStateAction<A
         if (ctx) {
           ctx.clearRect(0, 0, canvasWidth, canvasHeight);
   
-          nodes.forEach((n) => { drawNode(new Node(n.x, n.y, n.radius), canvasRef, ctx) });
+          nodes.forEach((n) => { drawNode(new Node(n.x, n.y, n.radius, n.image), canvasRef, ctx) });
         }
       }
     }, [nodes]);
