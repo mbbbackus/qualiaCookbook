@@ -1,17 +1,58 @@
 import React, { useRef, useEffect } from 'react';
+// import debounce from 'lodash/debounce';
 import { useCanvas } from '../../hooks/useCanvas';
-import Node from './Node';
+import tempData from "../../tempData";
+import placeNodes from './NodeHelpers';
 
-const GraphCanvas = () => {
-  const [ nodes, setNodes, canvasRef, canvasWidth, canvasHeight ] = useCanvas();
+const debounce = (fn: Function, ms = 300) => {
+  let timeoutId: ReturnType<typeof setTimeout>;
+  return function (this: any, ...args: any[]) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn.apply(this, args), ms);
+  };
+};
+
+const GraphCanvas = (props: any) => {
+  const setNodeId = props.setNodeId;
+  const selectedNode = props.selectedNode;
+  const [ 
+    nodes, 
+    setNodes, 
+    canvasRef, 
+    canvasWidth, 
+    canvasHeight 
+  ] = useCanvas();
+
+  // On pageload, create event listener for resize which redraws nodes
+  useEffect(() => {
+    window.addEventListener('resize', 
+      debounce(() => {
+        // console.log(window.innerWidth, window.innerHeight);
+        const freshNodes = placeNodes(nodes);
+        setNodes(freshNodes);
+      }, 300)
+    );
+    return () => { window.removeEventListener('resize', () => {}) }
+  });
+
+  // On change of selectedNode, update the nodes
+  useEffect(() => {
+    const data = [selectedNode, ...selectedNode?.connections?.map((id: string) => tempData.nodes.filter(node => node.id === id)[0]) || []];
+    const freshNodes = placeNodes(data);
+    setNodes(freshNodes);
+  }, [selectedNode]);
+  
 
   const handleCanvasClick=(event: React.MouseEvent<HTMLElement>)=>{
     const currentCoord = { x: event.clientX, y: event.clientY };
-    for (const node of nodes) {
-      if (node.contains(currentCoord.x, currentCoord.y)){
-        console.log("clicked node: ", node);
+    if (nodes) {
+      for (const node of nodes) {
+        if (node.contains(currentCoord.x, currentCoord.y)){
+          console.log("clicked node: ", node);
+          setNodeId(node.id);
+        }
       }
-    }
+    } 
   };
 
   const handleCanvasMouseMove=(event: React.MouseEvent<HTMLElement>)=>{
@@ -19,10 +60,13 @@ const GraphCanvas = () => {
     if (!canvasObj) return;
     const currentCoord = { x: event.clientX, y: event.clientY };
     let cursorInNode = false;
-    for (const node of nodes) {
-      if (node.contains(currentCoord.x, currentCoord.y)){
-        cursorInNode = true;
-      } 
+
+    if (nodes) {
+      for (const node of nodes) {
+        if (node.contains(currentCoord.x, currentCoord.y)){
+          cursorInNode = true;
+        } 
+      }
     }
     canvasObj!.style.cursor = cursorInNode ? "pointer" : "default";
   };

@@ -1,9 +1,19 @@
-function InfoPanel() {
-    return (
-      <div className="info-panel">
-      </div>
-    );
-  }
-  
-  export default InfoPanel;
+import { useState, useEffect } from 'react';
+
+function InfoPanel(props: any) {
+
+  const node = props.node;
+
+  // useEffect(() => {
+    
+  // }, [])
+
+  return (
+    <div className="info-panel">
+      <span>{node?.name}</span>
+    </div>
+  );
+}
+
+export default InfoPanel;
   

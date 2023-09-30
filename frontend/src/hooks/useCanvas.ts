@@ -24,8 +24,8 @@ export function useCanvas(): [Array<Node>, React.Dispatch<React.SetStateAction<A
   }
 
   useEffect(() => {
-    setCanvasHeight(window.innerHeight);
-    setCanvasWidth(window.innerWidth);
+    setCanvasHeight(window.innerHeight - 20);
+    setCanvasWidth(window.innerWidth - 20);
     draw();
   }, [nodes]);
 
