@@ -11,34 +11,31 @@ import "../styles/LayoutContainer.css";
 function LayoutContainer() {
 
   const [nodeId, setNodeId] = useState<string | null>(null);
-  const [selectedNode, setNode] = useState<any | null>(null); 
+  // const [selectedNode, setNode] = useState<any | null>(null); 
 
   // On pageload, pull from localStorage or default to qualia cookbook
   useEffect(() => {
-    const nodeId = localStorage.getItem("nodeId") || '0';
-    setNodeId(nodeId);
-    setNode(tempData.nodes.filter(node => node.id === nodeId)[0]);
-  
+    setNodeId(localStorage.getItem("nodeId"));
   }, []);
 
   // On change of nodeId, update localStorage and set the node
   useEffect(() => {
     if (nodeId) {
       localStorage.setItem("nodeId", nodeId);
-      setNode(tempData.nodes.filter(node => node.id === nodeId)[0]);
+      // setNodeId(nodeId);
     }
   }, [nodeId]);
 
   return (
     <div className="layout-container">
       <div className="canvas-container"> 
-        <GraphCanvas selectedNode={selectedNode} setNodeId={setNodeId}/>
+        <GraphCanvas selectedNodeId={nodeId} setNodeId={setNodeId}/>
       </div>
-      {selectedNode && 
+      {/* {selectedNode && 
         <div className="info-panel-container">
           <InfoPanel node={selectedNode}/>
         </div>
-      }
+      } */}
     </div>
   );
 }
