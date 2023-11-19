@@ -6,9 +6,9 @@ Welcome.
 
 ## FAQ
 
-[What is Qualia?](https://www.notion.so/What-is-Qualia-5faacb8d2dbb40a89c47f02b48bc43c7?pvs=21)
+[What is Qualia?](https://tricolor-ketch-5a2.notion.site/What-is-Qualia-5faacb8d2dbb40a89c47f02b48bc43c7?pvs=4)
 
-[Cracking Qualia](https://www.notion.so/Cracking-Qualia-3af805bb71494d839b23ae7e0e228008?pvs=21)
+[Cracking Qualia](https://tricolor-ketch-5a2.notion.site/Cracking-Qualia-3af805bb71494d839b23ae7e0e228008?pvs=4)
 
 ## What is this “cookbook” exactly?
 
