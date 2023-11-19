@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Qualia Cookbook
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We’re going to try to figure out what qualia is, how to make it, and how to share it. If we succeed, the consequences will be immeasurable, literally. 
 
-## Available Scripts
+Welcome.
 
-In the project directory, you can run:
+## FAQ
 
-### `npm start`
+[What is Qualia?](https://www.notion.so/What-is-Qualia-5faacb8d2dbb40a89c47f02b48bc43c7?pvs=21)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[Cracking Qualia](https://www.notion.so/Cracking-Qualia-3af805bb71494d839b23ae7e0e228008?pvs=21)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## What is this “cookbook” exactly?
 
-### `npm test`
+Let’s start with why I’ve called this the “Qualia Cookbook”.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Here’s how this website is like a cookbook:
 
-### `npm run build`
+- Its contents could eventually serve as a sort or recipe for making qualia.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Here’s how it’s not like a cookbook: 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- For normal cookbooks, the reader learns the recipe and uses the ingredients to make a beautiful product. For this one, the beautiful product (you) learns the ingredients (our concepts) and uses the recipe (the concept graph) to make a reader (someone who understands what qualia is). So, it’s like a reverse cookbook.
+- The entries are not isolated recipes, but rather pieces of a puzzle that contribute to a greater whole.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Qualia Cookbook Format
 
-### `npm run eject`
+Each entry will cover a specific concept. Generally, the goal is to name these entries well which means we should stray away from confusing names and encourage simple and intuitive names. More on this in a later entry
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The website will have the format of a network graph so that users can quickly navigate the tree of ideas and onboard themselves to the cause. There will also be nested article referencing such that, if an article is mentioned
+by another article, the user can expand that article within the context of the article referencing it.
