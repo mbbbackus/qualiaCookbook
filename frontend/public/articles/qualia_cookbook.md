@@ -1,4 +1,3 @@
-# 📕 Qualia Cookbook
 
 We’re going to try to figure out what qualia is, how to make it, and how to share it. If we succeed, the consequences will be immeasurable, literally. 
 
@@ -6,9 +5,9 @@ Welcome.
 
 ## FAQ
 
-[What is Qualia?](/article/qualia)
+<Nest>What is Qualia?|qualia<Nest>
 
-[Cracking Qualia](/article/cracking_qualia)
+<Nest>How do we crack it?|cracking_qualia<Nest>
 
 ## What is this “cookbook” exactly?
 

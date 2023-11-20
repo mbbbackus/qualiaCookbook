@@ -1,5 +1,3 @@
-# 🤔 “Qualia? What's Qualia?”
-
 I remember when I first heard this term in a university lecture, I didn’t get it. It wasn’t until a year later that I would start to understand, but the first time I heard it, I was dense.
 
 I do remember asking my computer science professors, “How can we program a computer experience things?” They tended to be less enthusiastic to answer that than I thought they would be. Even those teaching AI classes. “You’ll have to take a philosophy class for that.”

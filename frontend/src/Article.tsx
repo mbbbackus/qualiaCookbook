@@ -1,38 +1,60 @@
-import { useParams } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
 import Markdown from "react-markdown";
 
 import './Article.css';
 
 import React, { useState, useEffect } from 'react';
 
-function Article() {
-	const params = useParams<{ articleId: string }>();
-	const articleId = params.articleId;
+interface ArticleProps {
+    articleName: string;
+    articleId: string;
+}
 
-	const navigate = useNavigate();
+const Article: React.FC<ArticleProps> = ({ articleName, articleId }) => {
 
-	const goHome = () => {
-		navigate(`/`);
-	};
-
-	const [markdownContent, setMarkdownContent] = useState('');
+	const [markdownContent, setMarkdownContent] = useState<string[]>([]);
+	const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
 	useEffect(() => {
 		// open markdown file and ingest
 		fetch(`/articles/${articleId}.md`)
 			.then((response) => response.text())
 			.then((text) => {
-				setMarkdownContent(text);
+				setMarkdownContent(text.split('<Nest>'));
 			});
 	}, []);
 
+    const expandArticle = () => {
+        setIsExpanded(!isExpanded);
+    }
+
 	return (
-		<div className="Article">
-			<button onClick={goHome}>Home</button>
-			<Markdown>
-				{markdownContent}
-			</Markdown>
+		<div 
+            className="article" 
+        >
+            <div 
+                className="article-title" 
+                onClick={expandArticle}
+            >
+                {articleName}
+            </div>
+            {!isExpanded ? 
+                ''
+            : 
+                <div className="article-body">
+                    {markdownContent.map((content, index) => {
+                        if (index % 2 === 1) {
+                            const [name, id] = content.split('|')
+                            return <Article articleName={name} articleId={id}/>;
+                        } else {
+                            return (
+                                <Markdown>
+                                    {content}
+                                </Markdown>
+                            );
+                        }
+                    })}
+                </div>
+            }
 		</div>
 	);
 }
