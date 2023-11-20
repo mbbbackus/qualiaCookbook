@@ -29,10 +29,10 @@ export const links = [
     },
     {
         source: "awareness",
-        target: "curation" 
+        target: "flow" 
     },
     {
-        source: "flow",
+        source: "awareness",
         target: "curation" 
     },
     {

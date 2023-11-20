@@ -1,46 +1,59 @@
 export const nodes =[
 	{ 
         id: "protoqualia",
-        name: "Protoqualia" 
+        name: "Protoqualia",
+        symbol: "🍅"
+
     },
 	{ 
         id: "metaqualia",
-        name: "Metaqualia" 
+        name: "Metaqualia",
+        symbol: ""
     },
 	{ 
         id: "qualia",
-        name: "Qualia"
+        name: "Qualia",
+        symbol: "🍎"
     },
 	{ 
         id: "awareness",
-        name: "Awareness" 
+        name: "Awareness",
+        symbol: "🔦" 
     },
 	{ 
         id: "curation",
-        name: "Curation" 
+        name: "Curation",
+        symbol: "🖼️" 
     },
 	{ 
         id: "meditation",
-        name: "Meditation" 
+        name: "Meditation",
+        symbol: "🧘" 
     },
 	{ 
         id: "flow",
-        name: "Flow" 
+        name: "Flow",
+        symbol: "🏄" 
     },
 	{ 
         id: "alignment",
-        name: "Alignment" 
+        name: "Alignment",
+        symbol: "⚖️" 
     },
 	{ 
         id: "internal_empiricism",
-        name: "Internal Empiricism" 
+        name: "Internal Empiricism",
+        symbol: "👁️‍🗨️" 
     },
 	{ 
         id: "qualia_cookbook",
-        name: "Qualia Cookbook", radius: 30  
+        name: "Qualia Cookbook",
+        radius: 30,
+        symbol: "📕"  
     },
     { 
         id: "cracking_qualia",
-        name: "Cracking Qualia" 
+        name: "Cracking Qualia",
+        symbol: "⛏️" 
     },
 ];

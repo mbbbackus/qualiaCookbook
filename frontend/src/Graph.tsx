@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { nodes } from './nodes';
 import { links } from './links';
 
-import './App.css';
+import './Graph.css';
 import * as d3 from 'd3';
 
 import { SimulationNodeDatum } from 'd3';
@@ -18,6 +18,7 @@ import { SimulationNodeDatum } from 'd3';
 interface Node extends SimulationNodeDatum {
 	id: string;
 	name: string;
+	symbol: string;
 	radius?: number;
 	x?: number;
 	y?: number;
@@ -130,58 +131,68 @@ function Graph() {
 				)
 			.attr("class", "node")
 			.each(function(d) {
-				d3.select(this)
-				.append("circle")
-				.attr("fill", "red")
-				.attr("r", d.radius || radius)
-				.on("click", async function(e) {
-					goToArticle(d.id)
-				});
-				d3.select(this)
-				.append("text")
-				.attr("dy", (d.radius || radius) + 20)
-				.style("text-anchor", "middle")
-				// .style("font-size", "15px")
-				.text(d.name)
+				d3.select(this).append("text")
+					.attr("dx", 0)
+					.attr("dy", ".35em")
+					.text(function(e) { return d.symbol; }) // Replace with your desired emoji
+					.style("font-size", "36px") // Adjust size as needed
+					.style("text-anchor", "middle");
+				d3.select(this).append("circle")
+					// .attr("fill", "red")
+					.attr("r", d.radius || radius)
+					.attr("opacity", 0)
+					.on("click", async function(e) {
+						goToArticle(d.id)
+					});
+				d3.select(this).append("text")
+					.attr("dy", (d.radius || radius) + 20)
+					.style("text-anchor", "middle")
+					// .style("font-size", "15px")
+					.text(d.name);
+				
+
 			})
+
+		// node
+		
 		  
-			function ticked() {
-			  link
+		function ticked() {
+			link
 				.attr("x1", function(d) {
-				  return d.source.x!;
+					return d.source.x!;
 				})
 				.attr("y1", function(d) {
-				  return d.source.y!;
+					return d.source.y!;
 				})
 				.attr("x2", function(d) {
-				  return d.target.x!;
+					return d.target.x!;
 				})
 				.attr("y2", function(d) {
-				  return d.target.y!;
+					return d.target.y!;
 				});
+		
+			node.attr("transform", function(d) {
+				return "translate(" + d.x + "," + d.y + ")";
+			});
+		
+		}
 		  
-			  node.attr("transform", function(d) {
-				  return "translate(" + d.x + "," + d.y + ")";
-			  });
-		  
-			}
-		  
-			function dragstarted(event: d3.D3DragEvent<SVGCircleElement, any, any>, d: Node) {
-			  if (!event?.active) simulation.alphaTarget(0.3).restart();
-			  d.fx = d.x;
-			  d.fy = d.y;
-			}
-		  
-			function dragged(event: d3.D3DragEvent<SVGCircleElement, any, any>, d: Node) {
-			  d.fx = event.x;
-			  d.fy = event.y;
-			}
-		  
-			function dragended(event: d3.D3DragEvent<SVGCircleElement, any, any>, d: Node) {
-			  if (!event?.active) simulation.alphaTarget(0);
-			  d.fx = null;
-			  d.fy = null;
-			}
+		function dragstarted(event: d3.D3DragEvent<SVGCircleElement, any, any>, d: Node) {
+			if (!event?.active) simulation.alphaTarget(0.3).restart();
+			d.fx = d.x;
+			d.fy = d.y;
+		}
+		
+		function dragged(event: d3.D3DragEvent<SVGCircleElement, any, any>, d: Node) {
+			d.fx = event.x;
+			d.fy = event.y;
+		}
+		
+		function dragended(event: d3.D3DragEvent<SVGCircleElement, any, any>, d: Node) {
+			if (!event?.active) simulation.alphaTarget(0);
+			d.fx = null;
+			d.fy = null;
+		}
 	}, []);
 
 	return (
