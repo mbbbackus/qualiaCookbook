@@ -1,0 +1,11 @@
+The term comes from a scientist with an incredible name: [Mihaly Csikszentmihalyi](https://en.wikipedia.org/wiki/Mihaly_Csikszentmihalyi). It’s described as the experience of immersion. Total focus and absorption into the present moment by way of feeling fully engaged by some activity. I’ve had it described to me as the experience you have when you’re given a task that you’re adequately challenged by but also capable of solving. Perhaps you’ve felt it when playing a sport or a musical instrument, or maybe while having a good conversation, or grinding at work. 
+
+I believe the concept of flow can be stretched into something more broad though. In my experience, there are varying levels of flow states. Sometimes I’ll be so immersed in programming that I’ll forget to eat. Sometimes I’ll be reading a book that’s completely drawn me in, but I still get distracted every once in a while. And sometimes, I hop in and out of focus while working on something, to my own dismay.
+
+I’d call these varying levels of flow “viscosity”. For the uninitiated, viscosity refers to how quickly a substance flows, so syrup has a high viscosity because it’s sticky and slow to pour, while oil has a low viscosity because it’s slippery and moves quickly. If we map this to mental states, we can intuit that a focused flow state has a low viscosity, because it provides lots of clarity and feels easy to move through. Meanwhile, an unfocused flow state feels slow and confusing, and even obstructing, which is why I’d describe it as having a high viscosity. 
+
+So, we add two more building blocks: Flow, and viscosity. 
+
+But, you may wonder why I’ve chosen these obscure terms, rather than just use something like “focus” or “awareness”. Well, in short, I believe these terms support the assumption that there is some sort of spotlight in our heads which we control. Focus sounds acute, whereas flow sounds collective. This is significant because qualia are collectively aware. When you are in a low viscosity flow state, it is because there is a harmony in the collective qualia that make up your mind. This distinction is important to me because I don’t believe there is any other substance in our conscious mind other than qualia. The qualia collectively form something, from which flow emerges. I call this a gestalt.
+
+
