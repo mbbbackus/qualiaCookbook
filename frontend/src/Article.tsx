@@ -16,7 +16,7 @@ const Article: React.FC<ArticleProps> = ({ articleName, articleId }) => {
 
 	useEffect(() => {
 		// open markdown file and ingest
-		fetch(`/articles/${articleId}.md`)
+		fetch(`/qualiaCookbook/articles/${articleId}.md`)
 			.then((response) => response.text())
 			.then((text) => {
 				setMarkdownContent(text.split('<Nest>'));

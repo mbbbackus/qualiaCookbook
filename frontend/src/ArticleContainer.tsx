@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Markdown from "react-markdown";
 import Article from './Article';
 import { nodes } from './nodes';
+import * as d3 from 'd3';
 
 import './ArticleContainer.css';
 
@@ -15,7 +16,9 @@ interface ArticleContainerProps {
 function ArticleContainer() {
 	const params = useParams();
 	const articleId = params.articleId;
-	const articleName = nodes.find((node: any) => node.id === articleId)?.name;
+	const articleNode = nodes.find((node: any) => node.id === articleId);
+	const articleName = articleNode?.name;
+	const articleSymbol = articleNode?.symbol;
 
 	const navigate = useNavigate();
 
@@ -40,7 +43,7 @@ function ArticleContainer() {
 			<button className="button-home" onClick={goHome}>
 				<img src="/qualiaCookbook/graph-button.svg" alt="home" className="home-icon"/>
 			</button>
-			<h2 className="header-scrolling">{articleName}</h2>
+			<h2 className="header-scrolling">{articleSymbol} {articleName}</h2>
 			{markdownContent.map((content, index) => {
 				if (index % 2 === 1) {
 					const [name, id] = content.split('|')
