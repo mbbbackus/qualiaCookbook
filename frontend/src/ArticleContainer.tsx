@@ -27,7 +27,7 @@ function ArticleContainer() {
 
 	useEffect(() => {
 		// open markdown file and ingest
-		fetch(`/articles/${articleId}.md`)
+		fetch(`/qualiaCookbook/articles/${articleId}.md`)
 			.then((response) => response.text())
 			.then((text) => {
 				setMarkdownContent(text.split('<Nest>'));
@@ -38,7 +38,7 @@ function ArticleContainer() {
 	return (
 		<div className="Article">
 			<button className="button-home" onClick={goHome}>
-				<img src="/graph-button.svg" alt="home" className="home-icon"/>
+				<img src="/qualiaCookbook/graph-button.svg" alt="home" className="home-icon"/>
 			</button>
 			<h2 className="header-scrolling">{articleName}</h2>
 			{markdownContent.map((content, index) => {
