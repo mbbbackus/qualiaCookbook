@@ -114,7 +114,7 @@ function Graph() {
 			.append("line")
 			.attr("stroke-width", 3);
 		
-		var radius = 20;
+		var radius = 40;
 		var node = svg
 			.append("g")
 			.attr("class", "nodes")
@@ -135,7 +135,7 @@ function Graph() {
 					.attr("dx", 0)
 					.attr("dy", ".35em")
 					.text(function(e) { return d.symbol; }) // Replace with your desired emoji
-					.style("font-size", "36px") // Adjust size as needed
+					.style("font-size", "64px") // Adjust size as needed
 					.style("text-anchor", "middle");
 				d3.select(this).append("circle")
 					// .attr("fill", "red")
@@ -151,9 +151,7 @@ function Graph() {
 					.text(d.name);
 				
 
-			})
-
-		// node
+			});
 		
 		  
 		function ticked() {

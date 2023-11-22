@@ -31,13 +31,16 @@ function ArticleContainer() {
 			.then((response) => response.text())
 			.then((text) => {
 				setMarkdownContent(text.split('<Nest>'));
-			});
+			}
+		);
 	}, []);
 
 	return (
 		<div className="Article">
-			<button onClick={goHome}>Home</button>
-			<h1>{articleName}</h1>
+			<button className="button-home" onClick={goHome}>
+				<img src="/graph-button.svg" alt="home" className="home-icon"/>
+			</button>
+			<h2 className="header-scrolling">{articleName}</h2>
 			{markdownContent.map((content, index) => {
 				if (index % 2 === 1) {
 					const [name, id] = content.split('|')

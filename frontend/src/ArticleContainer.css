@@ -3,51 +3,65 @@
 }
 
 .Article {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; Centers content on the cross axis */
-    /* padding: 20px; */
-    max-width: 800px; /* Maximum width of the content area */
-    margin: 0 auto; /* Centers the container */
-    padding: 0 10px;
-    line-height: 1.6; /* Improves readability */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; Centers content on the cross axis */
+  /* padding: 20px; */
+  max-width: 800px; /* Maximum width of the content area */
+  margin: 0 auto; /* Centers the container */
+  padding: 0 10px;
+  line-height: 1.6; /* Improves readability */
+}
+
+/* Styles for Markdown content */
+.Article h1,
+.Article h2,
+.Article h3,
+.Article h4,
+.Article h5,
+.Article h6 {
+  border-bottom: 2px solid #eaecef;
+  padding-bottom: 0.3em;
+  /* margin-top: 1em; */
+  /* margin-bottom: 1em; */
+  width: 100%; /* Ensure the underline spans the full width */
+}
+
+.Article p {
+  text-align: justify; /* For better readability */
+}
+
+/* Responsive design for smaller screens like mobile */
+@media (max-width: 768px) {
+  .Article {
+    /* padding: 10px; */
   }
-  
-  /* Styles for Markdown content */
-  .Article h1,
-  .Article h2,
-  .Article h3,
-  .Article h4,
-  .Article h5,
-  .Article h6 {
-    border-bottom: 2px solid #eaecef;
-    padding-bottom: 0.3em;
-    /* margin-top: 1em; */
-    /* margin-bottom: 1em; */
-    width: 100%; /* Ensure the underline spans the full width */
+
+  /* Adjust heading sizes for mobile */
+  .Article h1 {
+    font-size: 1.5em;
   }
-  
+
+  .Article h2 {
+    font-size: 1.3em;
+  }
+
   .Article p {
-    text-align: justify; /* For better readability */
+    text-align: left; /* Justified text can look too stretched on narrow screens */
   }
-  
-  /* Responsive design for smaller screens like mobile */
-  @media (max-width: 768px) {
-    .Article {
-      /* padding: 10px; */
-    }
-  
-    /* Adjust heading sizes for mobile */
-    .Article h1 {
-      font-size: 1.5em;
-    }
-  
-    .Article h2 {
-      font-size: 1.3em;
-    }
-  
-    .Article p {
-      text-align: left; /* Justified text can look too stretched on narrow screens */
-    }
-  }
-  
+}
+
+/* Circular back button with an arrow */
+.button-home {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 0;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
