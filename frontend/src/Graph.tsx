@@ -79,6 +79,43 @@ function Graph() {
 		var width: number = parseInt(svg.attr("width"));
 		var height: number = parseInt(svg.attr("height"));
 		var radius: number = 40;
+
+		var centeredNode: any = null;
+
+		function centerNode(this: SVGCircleElement, d: any) {
+			if (centeredNode) {
+				// Reset the position of the previously centered node
+				centeredNode.fx = null;
+				centeredNode.fy = null;
+			}
+	
+			if (centeredNode !== d) {
+				// Animate the transition to the center
+				d3.select(this)
+				  .transition()
+				  .duration(750)
+				  .tween("moveToCenter", () => {
+					  const ix = d3.interpolate(d.x, width / 2);
+					  const iy = d3.interpolate(d.y, height / 2);
+					  return function(t: any) {
+						  d.fx = ix(t);
+						  d.fy = iy(t);
+						  simulation.alpha(1).restart();
+					  };
+				  });
+	
+				centeredNode = d;
+			} else {
+				// Uncenter the node if it's clicked again
+				d.fx = null;
+				d.fy = null;
+				centeredNode = null;
+			}
+	
+			simulation.alpha(1).restart();
+		}
+	
+		// ... [the rest of the ticked function]
 		
 		var simulation = d3
 			.forceSimulation<Node>(graph.nodes)
@@ -95,6 +132,7 @@ function Graph() {
 		
 			.force("charge", d3.forceManyBody().strength(-2000))
 			.force("center", d3.forceCenter(width / 2, height / 2))
+			.force("vertical", d3.forceX(width / 2).strength(0.1))
 			.on("tick", ticked);
 
 		var container = svg.append("g");
@@ -135,7 +173,8 @@ function Graph() {
 					.attr("r", d.radius || radius)
 					.attr("opacity", 0)
 					.on("click", async function(e) {
-						goToArticle(d.id)
+						// goToArticle(d.id)
+						centerNode.call(this, d);
 					});
 				d3.select(this).append("text")
 					.attr("dy", (d.radius || radius) + 20)
@@ -149,7 +188,8 @@ function Graph() {
 		}
 		
 		let zoom = d3.zoom<HTMLElement, unknown>()
-			.on('zoom', handleZoom);
+			.on('zoom', handleZoom)
+			.scaleExtent([0.5, 2]);
 		
 		d3.select<HTMLElement, unknown>('svg')
 			.call(zoom);
