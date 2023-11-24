@@ -58,13 +58,6 @@ function Graph() {
 		if (!canvasNode) return;
 		
 		const canvasRect = canvasNode.getBoundingClientRect();
-		console.log(canvasRect);
-	  
-		canvas.append("circle")
-			.attr('radius', 10)
-			.attr('fill', 'red')
-			.attr('cx', canvasRect.width / 2)
-			.attr('cy', canvasRect.height / 2);
 
 		canvas.append("svg")
 			.attr("width", canvasRect.width)
@@ -75,7 +68,6 @@ function Graph() {
 
 		var svg = d3.select("svg");
 
-		console.log(svg)
 		window.addEventListener("resize", function() {
 			let newWidth = document.body.clientWidth;
 			let newHeight = document.body.clientHeight;
@@ -83,10 +75,10 @@ function Graph() {
 			svg.attr('width', newWidth)
 				.attr('height', newHeight);
 		});
+
 		var width: number = parseInt(svg.attr("width"));
 		var height: number = parseInt(svg.attr("height"));
-
-
+		var radius: number = 40;
 		
 		var simulation = d3
 			.forceSimulation<Node>(graph.nodes)
@@ -104,8 +96,10 @@ function Graph() {
 			.force("charge", d3.forceManyBody().strength(-2000))
 			.force("center", d3.forceCenter(width / 2, height / 2))
 			.on("tick", ticked);
+
+		var container = svg.append("g");
 		
-		var link = svg
+		var link = container
 			.append("g")
 			.attr("class", "links")
 			.selectAll("line")
@@ -114,8 +108,7 @@ function Graph() {
 			.append("line")
 			.attr("stroke-width", 3);
 		
-		var radius = 40;
-		var node = svg
+		var node = container
 			.append("g")
 			.attr("class", "nodes")
 			.selectAll(".node")
@@ -148,10 +141,18 @@ function Graph() {
 					.attr("dy", (d.radius || radius) + 20)
 					.style("text-anchor", "middle")
 					// .style("font-size", "15px")
-					.text(d.name);
-				
-
+					.text(d.name);	
 			});
+
+		function handleZoom(e: any) {
+			container.attr("transform", e.transform);
+		}
+		
+		let zoom = d3.zoom<HTMLElement, unknown>()
+			.on('zoom', handleZoom);
+		
+		d3.select<HTMLElement, unknown>('svg')
+			.call(zoom);
 		
 		  
 		function ticked() {
