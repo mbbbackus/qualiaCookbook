@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nodes } from './nodes';
 import { links } from './links';
@@ -40,15 +40,27 @@ var graph = {
 		}
 	})
 };
-console.log(graph);
 
 function Graph() {
 	const navigate = useNavigate();
 
-	const goToArticle = (articleId: string) => {
+	const goToArticle = () => {
+		const articleId = !!centeredNode ? centeredNode.id : '';
 		navigate(`/article/${articleId}`);
 	};
+
+	let [showArticleLink, setShowArticleLink] = React.useState<boolean>(false);
+	let [centeredNode, setCenteredNode] = React.useState<Node | null>(null);
 	
+	function getShowArticleLink() {
+		return showArticleLink;
+	}
+
+	useEffect(() => {
+	}, [centeredNode]);
+
+
+
 	useEffect(() => {
 		
 		const canvas = d3.select<HTMLElement, any>(".canvas");
@@ -80,18 +92,22 @@ function Graph() {
 		var height: number = parseInt(svg.attr("height"));
 		var radius: number = 40;
 
-		var centeredNode: any = null;
-
-		function centerNode(this: SVGCircleElement, d: any) {
+		function centerNode(d: any, context: SVGCircleElement) {
+			console.log(centeredNode)
 			if (centeredNode) {
 				// Reset the position of the previously centered node
-				centeredNode.fx = null;
-				centeredNode.fy = null;
+				// setCenteredNode({ ...centeredNode, fx: null, fy: null });
+				// centeredNode.fx = null;
+				// centeredNode.fy = null;
+				// d3.select(centeredNode.element)
+				// 	.transition()
+				// 	.duration(750)
+				console.log(centeredNode)
 			}
-	
+
 			if (centeredNode !== d) {
 				// Animate the transition to the center
-				d3.select(this)
+				d3.select(context)
 				  .transition()
 				  .duration(750)
 				  .tween("moveToCenter", () => {
@@ -104,12 +120,17 @@ function Graph() {
 					  };
 				  });
 	
-				centeredNode = d;
+				d3.select('#centered').attr('id', null).each(function(d:any) {
+					d.fx = null;
+					d.fy = null;
+				});
+				d3.select(context).attr('id', 'centered');
+				setCenteredNode(d);
 			} else {
 				// Uncenter the node if it's clicked again
 				d.fx = null;
 				d.fy = null;
-				centeredNode = null;
+				setCenteredNode(null);
 			}
 	
 			simulation.alpha(1).restart();
@@ -172,9 +193,9 @@ function Graph() {
 					// .attr("fill", "red")
 					.attr("r", d.radius || radius)
 					.attr("opacity", 0)
-					.on("click", async function(e) {
-						// goToArticle(d.id)
-						centerNode.call(this, d);
+					.on("click", function(e) {
+						centerNode(d, this);
+						setShowArticleLink(!showArticleLink);
 					});
 				d3.select(this).append("text")
 					.attr("dy", (d.radius || radius) + 20)
@@ -235,7 +256,22 @@ function Graph() {
 	}, []);
 
 	return (
-		<div className="canvas"></div>
+		<div className="graph-container">
+			<div className="canvas"></div>
+			{showArticleLink}
+			{!showArticleLink ? (
+				''
+			) : (
+				<div className="article-link" onClick={() => goToArticle()}>
+					<div className="article-link-icon">
+						{!!centeredNode ? centeredNode.symbol : ''}
+					</div>
+					<div className="article-link-text">
+						{!!centeredNode ? centeredNode.name : ''}
+					</div>
+				</div>
+			)}
+		</div>
   	);
 }
 

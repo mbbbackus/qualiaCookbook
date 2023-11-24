@@ -5,6 +5,12 @@ html, body {
   padding: 0;
 }
 
+.graph-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .canvas {
   width: 100%;
   height: 100%;
@@ -50,3 +56,30 @@ svg {
   width: 100%;
   height: 100%;
 }
+
+.article-link {
+  position: fixed;
+  bottom: 20px;
+  height: 50px;
+  padding: 15px;
+  width: calc(100% - 60px);
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: flex;
+}
+
+.article-link-text {
+  font-size: 36px;
+}
+
+.article-link-icon {
+  font-size: 36px;
+  margin-right: 10px;
+}
+
+/* #centered {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+} */
