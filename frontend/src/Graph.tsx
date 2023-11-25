@@ -44,22 +44,18 @@ var graph = {
 function Graph() {
 	const navigate = useNavigate();
 
+	const [showArticleLink, setShowArticleLink] = React.useState<boolean>(false);
+	const [centeredNode, setCenteredNode] = React.useState<Node | null>(null);
+
 	const goToArticle = () => {
 		const articleId = !!centeredNode ? centeredNode.id : '';
 		navigate(`/article/${articleId}`);
 	};
 
-	let [showArticleLink, setShowArticleLink] = React.useState<boolean>(false);
-	let [centeredNode, setCenteredNode] = React.useState<Node | null>(null);
-	
-	function getShowArticleLink() {
-		return showArticleLink;
+	const isMobile = () => {
+		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 	}
-
-	useEffect(() => {
-	}, [centeredNode]);
-
-
+	
 
 	useEffect(() => {
 		
@@ -93,18 +89,6 @@ function Graph() {
 		var radius: number = 40;
 
 		function centerNode(d: any, context: SVGCircleElement) {
-			console.log(centeredNode)
-			if (centeredNode) {
-				// Reset the position of the previously centered node
-				// setCenteredNode({ ...centeredNode, fx: null, fy: null });
-				// centeredNode.fx = null;
-				// centeredNode.fy = null;
-				// d3.select(centeredNode.element)
-				// 	.transition()
-				// 	.duration(750)
-				console.log(centeredNode)
-			}
-
 			if (centeredNode !== d) {
 				// Animate the transition to the center
 				d3.select(context)
@@ -135,8 +119,7 @@ function Graph() {
 	
 			simulation.alpha(1).restart();
 		}
-	
-		// ... [the rest of the ticked function]
+
 		
 		var simulation = d3
 			.forceSimulation<Node>(graph.nodes)
@@ -186,11 +169,10 @@ function Graph() {
 				d3.select(this).append("text")
 					.attr("dx", 0)
 					.attr("dy", ".35em")
-					.text(function(e) { return d.symbol; }) // Replace with your desired emoji
-					.style("font-size", "64px") // Adjust size as needed
+					.text(function(e) { return d.symbol; }) 
+					.style("font-size", "64px")
 					.style("text-anchor", "middle");
 				d3.select(this).append("circle")
-					// .attr("fill", "red")
 					.attr("r", d.radius || radius)
 					.attr("opacity", 0)
 					.on("click", function(e) {
@@ -200,10 +182,13 @@ function Graph() {
 				d3.select(this).append("text")
 					.attr("dy", (d.radius || radius) + 20)
 					.style("text-anchor", "middle")
-					// .style("font-size", "15px")
 					.text(d.name);	
 			});
 
+
+		/* ZOOM and PAN config */
+		const initialZoomLevel = isMobile() ? 0.5 : 1;
+			
 		function handleZoom(e: any) {
 			container.attr("transform", e.transform);
 		}
@@ -213,8 +198,16 @@ function Graph() {
 			.scaleExtent([0.5, 2]);
 		
 		d3.select<HTMLElement, unknown>('svg')
-			.call(zoom);
+			.call(zoom)
+			.call(zoom.transform, 
+				d3.zoomIdentity
+					.translate(width / 2, height / 2)
+					.scale(initialZoomLevel)
+					.translate(-width / 2, - height / 2)
+			);
 		
+		
+		/* TICK and DRAG methods */	
 		  
 		function ticked() {
 			link
@@ -258,7 +251,6 @@ function Graph() {
 	return (
 		<div className="graph-container">
 			<div className="canvas"></div>
-			{showArticleLink}
 			{!showArticleLink ? (
 				''
 			) : (

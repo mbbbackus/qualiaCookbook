@@ -69,6 +69,7 @@ svg {
   border: 1px solid gray;
   border-radius: 5px;
   display: flex;
+  background-color: white;
 }
 
 .article-link-text {
