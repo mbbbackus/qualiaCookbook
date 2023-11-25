@@ -66,10 +66,17 @@ svg {
   left: 0;
   right: 0;
   margin: auto;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   display: flex;
   background-color: white;
+  cursor: pointer;
+}
+
+.article-link:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  bottom: 20px;
 }
 
 .article-link-text {
@@ -81,6 +88,6 @@ svg {
   margin-right: 10px;
 }
 
-/* #centered {
+#centered {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-} */
+}

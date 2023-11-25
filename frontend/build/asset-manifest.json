@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/qualiaCookbook/static/css/main.9e9fac83.css",
-    "main.js": "/qualiaCookbook/static/js/main.9d968716.js",
+    "main.css": "/qualiaCookbook/static/css/main.35a33167.css",
+    "main.js": "/qualiaCookbook/static/js/main.c74d963c.js",
     "static/js/787.1c32e1a5.chunk.js": "/qualiaCookbook/static/js/787.1c32e1a5.chunk.js",
     "index.html": "/qualiaCookbook/index.html",
-    "main.9e9fac83.css.map": "/qualiaCookbook/static/css/main.9e9fac83.css.map",
-    "main.9d968716.js.map": "/qualiaCookbook/static/js/main.9d968716.js.map",
+    "main.35a33167.css.map": "/qualiaCookbook/static/css/main.35a33167.css.map",
+    "main.c74d963c.js.map": "/qualiaCookbook/static/js/main.c74d963c.js.map",
     "787.1c32e1a5.chunk.js.map": "/qualiaCookbook/static/js/787.1c32e1a5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e9fac83.css",
-    "static/js/main.9d968716.js"
+    "static/css/main.35a33167.css",
+    "static/js/main.c74d963c.js"
   ]
 }
