@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { nodes } from './nodes';
 import { links } from './links';
-
-import './Graph.css';
 import * as d3 from 'd3';
-
 import { SimulationNodeDatum } from 'd3';
+import './Graph.css';
 
 // RELEVANT LINKS
 // Typescript d3 react example: https://github.com/ultrasonicsoft/d3-network-graph-editor/blob/main/src/App.tsx
 // d3.event removed post d3 v6: https://stackoverflow.com/questions/64794711/d3-js-in-angular-property-event-does-not-exist-on-type-typeof-import
 // d3 basic network graph tutorial: https://www.youtube.com/watch?v=y2-sgZh49dQ
 
-
-// Define an interface for your node that extends SimulationNodeDatum
 interface Node extends SimulationNodeDatum {
 	id: string;
 	name: string;
@@ -43,22 +39,32 @@ var graph = {
 
 function Graph() {
 	const navigate = useNavigate();
+	let { selectedId } = useParams();
 
-	const [showArticleLink, setShowArticleLink] = React.useState<boolean>(false);
-	const [centeredNode, setCenteredNode] = React.useState<Node | null>(null);
+	const [showArticleLink, setShowArticleLink] = React.useState<boolean>(selectedId ? true : false);
+	const [centeredNode, setCenteredNode] = React.useState<Node | null>(nodes.find((node) => node.id === selectedId) || null);
 
 	const goToArticle = () => {
 		const articleId = !!centeredNode ? centeredNode.id : '';
 		navigate(`/article/${articleId}`);
 	};
 
+	const changePage = (nodeId: any) => {
+		navigate(`/${nodeId}`);
+	};
+
 	const isMobile = () => {
 		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 	}
-	
 
 	useEffect(() => {
-		
+		if (selectedId) {
+			setShowArticleLink(true);
+		} else {
+			setShowArticleLink(false);
+		}
+
+		d3.selectAll("svg > *").remove();
 		const canvas = d3.select<HTMLElement, any>(".canvas");
     
 		// Ensure the node exists before attempting to access its properties
@@ -88,8 +94,30 @@ function Graph() {
 		var height: number = parseInt(svg.attr("height"));
 		var radius: number = 40;
 
+		function moveToCenter(d: any, context: SVGCircleElement) {
+			d3.select(context)
+				.transition()
+				.duration(750)
+				.tween("moveToCenter", () => {
+					const ix = d3.interpolate(d.x, width / 2);
+					const iy = d3.interpolate(d.y, height / 2);
+					return function(t: any) {
+						d.fx = ix(t);
+						d.fy = iy(t);
+						simulation.alpha(1).restart();
+					};
+				});
+
+			d3.select('#centered').attr('id', null).each(function(d:any) {
+				d.fx = null;
+				d.fy = null;
+			});
+			d3.select(context).attr('id', 'centered');
+			setCenteredNode(d);
+		}
+
 		function centerNode(d: any, context: SVGCircleElement) {
-			if (centeredNode !== d) {
+			if (centeredNode?.id !== d.id) {
 				// Animate the transition to the center
 				d3.select(context)
 				  .transition()
@@ -110,11 +138,14 @@ function Graph() {
 				});
 				d3.select(context).attr('id', 'centered');
 				setCenteredNode(d);
+				changePage(d.id);
 			} else {
 				// Uncenter the node if it's clicked again
+				setShowArticleLink(!showArticleLink);
 				d.fx = null;
 				d.fy = null;
 				setCenteredNode(null);
+				changePage('');
 			}
 	
 			simulation.alpha(1).restart();
@@ -172,13 +203,19 @@ function Graph() {
 					.text(function(e) { return d.symbol; }) 
 					.style("font-size", "64px")
 					.style("text-anchor", "middle");
-				d3.select(this).append("circle")
+				const circle = d3.select(this).append("circle")
 					.attr("r", d.radius || radius)
 					.attr("opacity", 0)
 					.on("click", function(e) {
 						centerNode(d, this);
-						setShowArticleLink(!showArticleLink);
 					});
+				
+				if (d.id === selectedId) {
+					// centerNode(d, circle.node()!);
+					const context = circle.node()!;
+					moveToCenter(d, context);
+				}
+				
 				d3.select(this).append("text")
 					.attr("dy", (d.radius || radius) + 20)
 					.style("text-anchor", "middle")
@@ -246,7 +283,7 @@ function Graph() {
 			d.fx = null;
 			d.fy = null;
 		}
-	}, []);
+	}, [centeredNode]);
 
 	return (
 		<div className="graph-container">

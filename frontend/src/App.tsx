@@ -7,18 +7,11 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Graph/>} />
+        <Route path="/:selectedId" element={<Graph/>} />
         <Route path="/article/:articleId" element={<Article/>} />
       </Routes>
     </Router>
   );
 }
-
-// function App() {
-// 	return (
-// 		<div className="App">
-// 			<Graph/>
-// 		</div>
-//   	);
-// }
 
 export default App;

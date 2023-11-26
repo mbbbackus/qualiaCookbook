@@ -1,12 +1,8 @@
-import { useParams } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Markdown from "react-markdown";
 import Article from './Article';
 import { nodes } from './nodes';
-import * as d3 from 'd3';
-
 import './ArticleContainer.css';
-
 import React, { useState, useEffect } from 'react';
 
 interface ArticleContainerProps {
