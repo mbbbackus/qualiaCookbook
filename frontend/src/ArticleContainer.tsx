@@ -19,7 +19,7 @@ function ArticleContainer() {
 	const navigate = useNavigate();
 
 	const goHome = () => {
-		navigate(`/`);
+		navigate(`/${articleId}`);
 	};
 
 	const [markdownContent, setMarkdownContent] = useState<string[]>([]);

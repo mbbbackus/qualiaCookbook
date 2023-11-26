@@ -2,13 +2,13 @@ export const nodes =[
 	{ 
         id: "protoqualia",
         name: "Protoqualia",
-        symbol: "🍅"
+        symbol: "🔴"
 
     },
 	{ 
         id: "metaqualia",
         name: "Metaqualia",
-        symbol: ""
+        symbol: "❤️"
     },
 	{ 
         id: "qualia",
