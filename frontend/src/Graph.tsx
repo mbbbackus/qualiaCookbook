@@ -58,11 +58,16 @@ function Graph() {
 	}
 
 	useEffect(() => {
+
+		/* SHOW LINK */
+
 		if (selectedId) {
 			setShowArticleLink(true);
 		} else {
 			setShowArticleLink(false);
 		}
+
+		/* CANVAS SETUP */
 
 		d3.selectAll("svg > *").remove();
 		const canvas = d3.select<HTMLElement, any>(".canvas");
@@ -92,7 +97,8 @@ function Graph() {
 
 		var width: number = parseInt(svg.attr("width"));
 		var height: number = parseInt(svg.attr("height"));
-		var radius: number = 40;
+
+		/* CENTERING */
 
 		function moveToCenter(d: any, context: SVGCircleElement) {
 			d3.select(context)
@@ -119,25 +125,7 @@ function Graph() {
 		function centerNode(d: any, context: SVGCircleElement) {
 			if (centeredNode?.id !== d.id) {
 				// Animate the transition to the center
-				d3.select(context)
-				  .transition()
-				  .duration(750)
-				  .tween("moveToCenter", () => {
-					  const ix = d3.interpolate(d.x, width / 2);
-					  const iy = d3.interpolate(d.y, height / 2);
-					  return function(t: any) {
-						  d.fx = ix(t);
-						  d.fy = iy(t);
-						  simulation.alpha(1).restart();
-					  };
-				  });
-	
-				d3.select('#centered').attr('id', null).each(function(d:any) {
-					d.fx = null;
-					d.fy = null;
-				});
-				d3.select(context).attr('id', 'centered');
-				setCenteredNode(d);
+				moveToCenter(d, context);
 				changePage(d.id);
 			} else {
 				// Uncenter the node if it's clicked again
@@ -151,7 +139,8 @@ function Graph() {
 			simulation.alpha(1).restart();
 		}
 
-		
+		/* FORCE SIMULATION */
+
 		var simulation = d3
 			.forceSimulation<Node>(graph.nodes)
 			.force(
@@ -167,9 +156,15 @@ function Graph() {
 		
 			.force("charge", d3.forceManyBody().strength(-2000))
 			.force("center", d3.forceCenter(width / 2, height / 2))
-			.force("vertical", d3.forceX(width / 2).strength(0.1))
-			.on("tick", ticked);
+			.on("tick", ticked)
+				
+		if (isMobile()) {
+			simulation.force("vertical", d3.forceX(width / 2).strength(0.1))
+		}
 
+		/* NODES and LINKS */
+
+		var radius: number = 40;
 		var container = svg.append("g");
 		
 		var link = container
@@ -197,6 +192,12 @@ function Graph() {
 				)
 			.attr("class", "node")
 			.each(function(d) {
+				const backgroundCircle = d3.select(this).append("circle")
+					.attr("r", radius)
+					.attr("fill", "white")
+					.on("click", function(e) {
+						centerNode(d, this);
+					});
 				d3.select(this).append("text")
 					.attr("dx", 0)
 					.attr("dy", ".35em")
@@ -204,7 +205,7 @@ function Graph() {
 					.style("font-size", "64px")
 					.style("text-anchor", "middle");
 				const circle = d3.select(this).append("circle")
-					.attr("r", d.radius || radius)
+					.attr("r", radius)
 					.attr("opacity", 0)
 					.on("click", function(e) {
 						centerNode(d, this);
@@ -214,16 +215,22 @@ function Graph() {
 					// centerNode(d, circle.node()!);
 					const context = circle.node()!;
 					moveToCenter(d, context);
+					backgroundCircle.style("opacity", "100");
+					backgroundCircle.style("filter", "drop-shadow( 3px 3px 2px rgba(0, 0, 0, .2))");
+				} else {
+					backgroundCircle.style("opacity", "0");
+					backgroundCircle.style("filter", "none");
 				}
 				
 				d3.select(this).append("text")
-					.attr("dy", (d.radius || radius) + 20)
+					.attr("dy", radius + 20)
 					.style("text-anchor", "middle")
 					.text(d.name);	
 			});
 
 
 		/* ZOOM and PAN config */
+
 		const initialZoomLevel = isMobile() ? 0.5 : 1;
 			
 		function handleZoom(e: any) {

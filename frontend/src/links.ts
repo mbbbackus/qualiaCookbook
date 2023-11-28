@@ -16,6 +16,10 @@ export const links = [
         target: "qualia" 
     },
     {
+        source: "valence",
+        target: "qualia" 
+    },
+    {
         source: "qualia_cookbook",
         target: "internal_empiricism"
     },

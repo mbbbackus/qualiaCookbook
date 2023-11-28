@@ -15,6 +15,11 @@ export const nodes =[
         name: "Qualia",
         symbol: "🍎"
     },
+    { 
+        id: "valence",
+        name: "Valence",
+        symbol: "😊"
+    },
 	{ 
         id: "awareness",
         name: "Awareness",
