@@ -36,8 +36,16 @@ We also don’t know how our minds generate this stuff. We know that our minds d
 
 Furthermore, we don’t know how to share it. How do I show you what my vision looks like, or what my smells are like? There’s a question I would hear kids ask on the playground growing up that goes like, “what if my red isn’t your red?” In retrospect, I don’t know why I associate that with the playground because whenever I tell anybody that’s where I first heard of it, they tend to ask “what on earth kinda playground did you go to?” 
 
-These are the big three questions, as far as I’m concerned. What is it made of? How do we make it? How do we share it?
+These are the big three questions, as far as I’m concerned. 
+
+- What is it made of? 
+- How do we make it? 
+- How do we share it?
 
 But, here’s what we actually know. Qualia exists. You are experiencing things right now. Perhaps some smells from the room you’re in. Some odd sounds, or maybe just an AC unit humming. A comfortable chair, hopefully? Regardless: We know qualia exists.
 
-Honestly, that’s about it.
+We can also talk about simple properties, like how some qualia are pleasurable and others are painful. If you're curious about this, look into "valence":
+
+<Nest>Valence|valence<Nest>
+
+The purpose of the qualia cookbook is to explore as many properties of qualia as we can though. Not just valence. Where do we start though?
