@@ -20,12 +20,64 @@ export const links = [
         target: "qualia" 
     },
     {
+        source: "valence",
+        target: "ethics" 
+    },
+    {
+        source: "valence",
+        target: "aesthetics" 
+    },
+    {
+        source: "story",
+        target: "aesthetics" 
+    },
+    {
+        source: "story",
+        target: "qcb_tools" 
+    },
+    {
+        source: "ethics",
+        target: "aesthetics" 
+    },
+    {
+        source: "alignment",
+        target: "ethics" 
+    },
+    {
+        source: "animal_welfare",
+        target: "alignment" 
+    },
+    {
+        source: "animal_welfare",
+        target: "ethics" 
+    },
+    {
         source: "qualia_cookbook",
         target: "internal_empiricism"
     },
     {
         source: "qualia_cookbook",
         target: "alignment" 
+    },
+    {
+        source: "qualia_cookbook",
+        target: "qcb_tools" 
+    },
+    {
+        source: "cracking_qualia",
+        target: "qcb_tools" 
+    },
+    {
+        source: "meditation",
+        target: "qcb_tools" 
+    },
+    {
+        source: "internal_empiricism",
+        target: "qcb_tools" 
+    },
+    {
+        source: "internal_empiricism",
+        target: "awareness" 
     },
     {
         source: "qualia_cookbook",

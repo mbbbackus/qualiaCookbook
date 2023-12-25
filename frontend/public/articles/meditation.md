@@ -1,0 +1,3 @@
+There isn't much that I can say about meditation that is both significant and new. But, it possibly one of the best tools in our toolbox for cracking qualia. Meditation teaches you how to focus on protoqualia, amongst other things. Protoqualia are hard to focus on. We lose interest rapidly because of how simple they are. Staring at a white wall or listening to one musical note constantly is impossible to without more thoughts intruding. 
+
+If we want to answer any of the major questions about qualia, we'll have to observe it much more closely. In many cases, this may require a sort of meditation where the intention is nothing but observing and analyzing the qualia you're experiencing more. 

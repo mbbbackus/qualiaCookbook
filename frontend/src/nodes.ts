@@ -2,63 +2,105 @@ export const nodes =[
 	{ 
         id: "protoqualia",
         name: "Protoqualia",
-        symbol: "🔴"
+        symbol: "🔴",
+        color: "red"
 
     },
 	{ 
         id: "metaqualia",
         name: "Metaqualia",
-        symbol: "❤️"
+        symbol: "❤️",
+        color: "black"
     },
 	{ 
         id: "qualia",
         name: "Qualia",
-        symbol: "🍎"
+        symbol: "🍎",
+        color: "red"
     },
     { 
         id: "valence",
         name: "Valence",
-        symbol: "😊"
+        symbol: "😊",
+        color: "yellow"
+    },
+    { 
+        id: "aesthetics",
+        name: "Aesthetics",
+        symbol: "🎨",
+        color: "purple"
     },
 	{ 
         id: "awareness",
         name: "Awareness",
-        symbol: "🔦" 
+        symbol: "🔦",
+        color: "gold" 
     },
 	{ 
         id: "curation",
         name: "Curation",
-        symbol: "🖼️" 
+        symbol: "🖼️",
+        color: "green" 
     },
 	{ 
         id: "meditation",
         name: "Meditation",
-        symbol: "🧘" 
+        symbol: "🧘",
+        color: "pink" 
     },
 	{ 
         id: "flow",
         name: "Flow",
-        symbol: "🏄" 
+        symbol: "🏄",
+        color: "blue" 
     },
 	{ 
         id: "alignment",
         name: "Alignment",
-        symbol: "⚖️" 
+        symbol: "⚖️",
+        color: "lightgray" 
     },
 	{ 
         id: "internal_empiricism",
         name: "Internal Empiricism",
-        symbol: "👁️‍🗨️" 
+        symbol: "👁️‍🗨️",
+        color: "black" 
     },
 	{ 
+        id: "qcb_tools",
+        name: "Cookbook Tools",
+        symbol: "🧰",
+        color: "red"  
+    },
+	{ 
+        id: "ethics",
+        name: "Metaethics",
+        symbol: "👼",
+        color: "gold"  
+    },
+
+	{ 
+        id: "animal_welfare",
+        name: "Animal Welfare",
+        symbol: "🐄",
+        color: "pink"  
+    },
+    { 
         id: "qualia_cookbook",
         name: "Qualia Cookbook",
-        radius: 30,
-        symbol: "📕"  
+        symbol: "📕",
+        color: "red"  
+    },
+    { 
+        id: "story",
+        name: "Story",
+        symbol: "📖",
+        color: "yellow"  
     },
     { 
         id: "cracking_qualia",
         name: "Cracking Qualia",
-        symbol: "⛏️" 
+        symbol: "⛏️",
+        color: "black" 
     },
 ];

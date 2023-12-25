@@ -27,7 +27,7 @@ interface Link {
 	target: Node;
 }
 
-var graph = {
+var initialGraph = {
 	nodes,
 	links: links.map((link) => {
 		return {
@@ -43,6 +43,7 @@ function Graph() {
 
 	const [showArticleLink, setShowArticleLink] = React.useState<boolean>(selectedId ? true : false);
 	const [centeredNode, setCenteredNode] = React.useState<Node | null>(nodes.find((node) => node.id === selectedId) || null);
+	const [graph, setGraph] = React.useState<any>({nodes: initialGraph.nodes, links: initialGraph.links});
 
 	const goToArticle = () => {
 		const articleId = !!centeredNode ? centeredNode.id : '';
@@ -55,6 +56,14 @@ function Graph() {
 
 	const isMobile = () => {
 		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+	}
+
+	const sendNodeToTop = (node: any) => {
+		const index = graph.nodes.indexOf(node);
+		if (index > -1) {
+			graph.nodes.splice(index, 1);
+			graph.nodes.push(node);
+		}
 	}
 
 	useEffect(() => {
@@ -122,7 +131,7 @@ function Graph() {
 			setCenteredNode(d);
 		}
 
-		function centerNode(d: any, context: SVGCircleElement) {
+		function selectNode(d: any, context: SVGCircleElement) {
 			if (centeredNode?.id !== d.id) {
 				// Animate the transition to the center
 				moveToCenter(d, context);
@@ -154,7 +163,7 @@ function Graph() {
 				.links(graph.links)
 			)
 		
-			.force("charge", d3.forceManyBody().strength(-2000))
+			.force("charge", d3.forceManyBody().strength(-5000))
 			.force("center", d3.forceCenter(width / 2, height / 2))
 			.on("tick", ticked)
 				
@@ -195,10 +204,7 @@ function Graph() {
 				const backgroundCircle = d3.select(this).append("circle")
 					.attr("r", radius)
 					.attr("fill", "white")
-					.on("click", function(e) {
-						centerNode(d, this);
-					});
-				d3.select(this).append("text")
+				const symbol = d3.select(this).append("text")
 					.attr("dx", 0)
 					.attr("dy", ".35em")
 					.text(function(e) { return d.symbol; }) 
@@ -208,24 +214,38 @@ function Graph() {
 					.attr("r", radius)
 					.attr("opacity", 0)
 					.on("click", function(e) {
-						centerNode(d, this);
+						selectNode(d, this);
+						sendNodeToTop(d);
 					});
+					
+				const label = d3.select(this).append("text")
+					.attr("dy", radius + 20)
+					.style("text-anchor", "middle")
+					.text(d.name);	
 				
+				// Center node special properties	
 				if (d.id === selectedId) {
-					// centerNode(d, circle.node()!);
 					const context = circle.node()!;
 					moveToCenter(d, context);
 					backgroundCircle.style("opacity", "100");
 					backgroundCircle.style("filter", "drop-shadow( 3px 3px 2px rgba(0, 0, 0, .2))");
+					backgroundCircle.style("stroke", "#000000");
+					backgroundCircle.style("stroke-width", "2px");
+					backgroundCircle.style("stroke-opacity", "0.5");
+					backgroundCircle.attr("r", radius * 2);
+					circle.attr("r", radius * 2);
+					symbol.style("font-size", "96px");
+					label.attr("dy", radius * 2 + 20);
+					backgroundCircle.style("z-index", "1000")
+					symbol.style("z-index", "1001")
+					label.style("z-index", "1002")
+					circle.style("z-index", "1003")
 				} else {
 					backgroundCircle.style("opacity", "0");
 					backgroundCircle.style("filter", "none");
 				}
 				
-				d3.select(this).append("text")
-					.attr("dy", radius + 20)
-					.style("text-anchor", "middle")
-					.text(d.name);	
+
 			});
 
 
