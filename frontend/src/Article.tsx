@@ -15,8 +15,8 @@ const Article: React.FC<ArticleProps> = ({ articleName, articleId }) => {
 	const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
 	useEffect(() => {
-		// open markdown file and ingest
-		fetch(`/qualiaCookbook/articles/${articleId}.md`)
+		// open markdown file and /ingest
+		fetch(`/articles/${articleId}.md`)
 			.then((response) => response.text())
 			.then((text) => {
 				setMarkdownContent(text.split('<Nest>'));

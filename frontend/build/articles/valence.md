@@ -8,19 +8,19 @@ Now, let's explore why "valence" means what it means.
 
 First, recall how valence shells work in chemistry ("valence shells" being the rings around in atom in the diagram you're about to see). All that matters for the metaphor is that **some valence shells attract and others repel**. Specifically, attraction happens when two atoms can complete their valence shells by sharing electrons:
 
-![valence chemistry diagram](./qualiaCookbook/diagrams/valence_chemistry.svg)
+![valence chemistry diagram](./diagrams/valence_chemistry.svg)
 
 So, the state of an atoms valence determines whether it is attractive. Similarly, the state of an experience's valence determines whether it is attractive. For example, let's say you can have an experience that'll give you pleasure. Then, you will want it:
 
-![valence psychology happiness diagram](./qualiaCookbook/diagrams/valence_psychology_happiness.svg)
+![valence psychology happiness diagram](./diagrams/valence_psychology_happiness.svg)
 
 On the other hand, if an experience will cause you pain, you will not want it. In fact, you probably want to actively avoid it:
 
-![valence psychology sadness diagram](./qualiaCookbook/diagrams/valence_psychology_sadness.svg)
+![valence psychology sadness diagram](./diagrams/valence_psychology_sadness.svg)
 
 So, experiences (or qualia) with a positive valence attract you while experiences with a negative valence repel you. Makes sense, right?
 
-![valence scale diagram](./qualiaCookbook/diagrams/valence_scale.svg)
+![valence scale diagram](./diagrams/valence_scale.svg)
 
 
 ### So what?
