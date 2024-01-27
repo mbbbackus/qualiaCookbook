@@ -1,28 +1,9 @@
 export const nodes =[
-	{ 
-        id: "protoqualia",
-        name: "Protoqualia",
-        symbol: "🔴",
-        color: "red"
-
-    },
-	{ 
-        id: "metaqualia",
-        name: "Metaqualia",
-        symbol: "❤️",
-        color: "black"
-    },
-	{ 
-        id: "qualia",
-        name: "Qualia",
-        symbol: "🍎",
-        color: "red"
-    },
     { 
-        id: "valence",
-        name: "Valence",
-        symbol: "😊",
-        color: "yellow"
+        id: "alignment",
+        name: "Alignment",
+        symbol: "⚖️",
+        color: "lightgray" 
     },
     { 
         id: "aesthetics",
@@ -36,6 +17,18 @@ export const nodes =[
         symbol: "🔦",
         color: "gold" 
     },
+    { 
+        id: "animal_welfare",
+        name: "Animal Welfare",
+        symbol: "🐄",
+        color: "pink"  
+    },
+    { 
+        id: "cracking_qualia",
+        name: "Cracking Qualia",
+        symbol: "⛏️",
+        color: "black" 
+    },
 	{ 
         id: "curation",
         name: "Curation",
@@ -43,53 +36,53 @@ export const nodes =[
         color: "green" 
     },
 	{ 
+        id: "ethics",
+        name: "Metaethics",
+        symbol: "👼",
+        color: "gold"  
+    },
+    { 
+        id: "flow",
+        name: "Flow",
+        symbol: "🏄",
+        color: "blue" 
+    },
+    { 
+        id: "internal_empiricism",
+        name: "Internal Empiricism",
+        symbol: "👁️‍🗨️",
+        color: "black" 
+    },
+    { 
         id: "meditation",
         name: "Meditation",
         symbol: "🧘",
         color: "pink" 
     },
 	{ 
-        id: "flow",
-        name: "Flow",
-        symbol: "🏄",
-        color: "blue" 
+        id: "metaqualia",
+        name: "Metaqualia",
+        symbol: "❤️",
+        color: "black"
     },
 	{ 
-        id: "alignment",
-        name: "Alignment",
-        symbol: "⚖️",
-        color: "lightgray" 
-    },
-	{ 
-        id: "internal_empiricism",
-        name: "Internal Empiricism",
-        symbol: "👁️‍🗨️",
-        color: "black" 
-    },
-	{ 
-        id: "qcb_tools",
-        name: "Cookbook Tools",
-        symbol: "🧰",
-        color: "red"  
-    },
-	{ 
-        id: "ethics",
-        name: "Metaethics",
-        symbol: "👼",
-        color: "gold"  
-    },
+        id: "protoqualia",
+        name: "Protoqualia",
+        symbol: "🔴",
+        color: "red"
 
-	{ 
-        id: "animal_welfare",
-        name: "Animal Welfare",
-        symbol: "🐄",
-        color: "pink"  
     },
     { 
         id: "qualia_cookbook",
         name: "Qualia Cookbook",
         symbol: "📕",
         color: "red"  
+    },
+	{ 
+        id: "qualia",
+        name: "Qualia",
+        symbol: "🍎",
+        color: "red"
     },
     { 
         id: "story",
@@ -98,9 +91,15 @@ export const nodes =[
         color: "yellow"  
     },
     { 
-        id: "cracking_qualia",
-        name: "Cracking Qualia",
-        symbol: "⛏️",
-        color: "black" 
+        id: "tools",
+        name: "Cookbook Tools",
+        symbol: "🧰",
+        color: "red"  
     },
+    { 
+        id: "valence",
+        name: "Valence",
+        symbol: "😊",
+        color: "yellow"
+    }
 ];
