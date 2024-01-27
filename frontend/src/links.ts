@@ -33,7 +33,7 @@ export const links = [
     },
     {
         source: "story",
-        target: "qcb_tools" 
+        target: "tools" 
     },
     {
         source: "ethics",
@@ -61,19 +61,19 @@ export const links = [
     },
     {
         source: "qualia_cookbook",
-        target: "qcb_tools" 
+        target: "tools" 
     },
     {
         source: "cracking_qualia",
-        target: "qcb_tools" 
+        target: "tools" 
     },
     {
         source: "meditation",
-        target: "qcb_tools" 
+        target: "tools" 
     },
     {
         source: "internal_empiricism",
-        target: "qcb_tools" 
+        target: "tools" 
     },
     {
         source: "internal_empiricism",
