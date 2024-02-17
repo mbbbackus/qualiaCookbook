@@ -5,23 +5,11 @@ export const nodes =[
         symbol: "⚖️",
         color: "lightgray" 
     },
-    { 
-        id: "aesthetics",
-        name: "Aesthetics",
-        symbol: "🎨",
-        color: "purple"
-    },
 	{ 
         id: "awareness",
         name: "Awareness",
         symbol: "🔦",
         color: "gold" 
-    },
-    { 
-        id: "animal_welfare",
-        name: "Animal Welfare",
-        symbol: "🐄",
-        color: "pink"  
     },
     { 
         id: "cracking_qualia",
@@ -34,12 +22,6 @@ export const nodes =[
         name: "Curation",
         symbol: "🖼️",
         color: "green" 
-    },
-	{ 
-        id: "ethics",
-        name: "Metaethics",
-        symbol: "👼",
-        color: "gold"  
     },
     { 
         id: "flow",
@@ -83,18 +65,6 @@ export const nodes =[
         name: "Qualia",
         symbol: "🍎",
         color: "red"
-    },
-    { 
-        id: "story",
-        name: "Story",
-        symbol: "📖",
-        color: "yellow"  
-    },
-    { 
-        id: "tools",
-        name: "Cookbook Tools",
-        symbol: "🧰",
-        color: "red"  
     },
     { 
         id: "valence",
